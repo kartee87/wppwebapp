@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Consume_EF_WebAPI.ProductEntity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<p>
+    <a href="@Url.Action("AddorEditNew","products")" class="btn-btn-default"> <i class="fa fa-plus"> Create New</i></a>
+</p>
+<table class="table table-striped">
+    <thead class="table-heading">
+        <tr>
+            @*<th>
+                    Product Id
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th> Actions</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                <a href="@Url.Action("AddorEditNew","products",new { id=item.id})" class="btn btn-default"> Edit</a>
+                <a href="@Url.Action("Delete","products",new { id=item.id})" class="btn btn-default"> Delete</a>
+               @* <a onclick="Delete(@item.id)" class="btn btn-default"> Delete</a>*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+@*@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            function Delete(id) {
+                debugger;
+                alertify.confirm("Are you confirm to delete?", function () {
+                    window / location.href='@Url.Action("Delete","Products")/' + id;
+                }, null)
+
+            }
+        }
+    </script>
+};*@
+

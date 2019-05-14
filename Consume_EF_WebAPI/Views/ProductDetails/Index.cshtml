@@ -1,0 +1,33 @@
+﻿@model List<Consume_EF_WebAPI.ProductEntity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of products from webapi</h2>
+
+
+@foreach (var item in Model)
+{
+<table>
+    <tr>
+        <td>
+             @Html.ActionLink("Edit", "Edit", new { id=item.ProductId })||
+           @Html.ActionLink("Details", "Details", new { id=item.ProductId })||
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })||
+        </td>
+        <td>
+            @item.ProductName |
+        </td>
+        <td>
+             @item.Description |
+        </td>
+        <td>
+          @item.Price
+        </td>
+    </tr>
+</table>
+
+}
+
+
